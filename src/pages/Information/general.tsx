@@ -12,6 +12,7 @@ const General = memo(() => (
       </h4>
       <div className='join w-full'>
         <input
+          name='general'
           className='input join-item input-bordered w-full'
           placeholder='2024/2/15至2024/3/26'
         />

@@ -10,8 +10,18 @@ const Contact = memo(() => (
         主要聯絡者
       </h4>
       <div className='join w-full'>
-        <input className='input join-item input-bordered w-4/6' type='email' placeholder='Email' />
-        <input className='input join-item input-bordered w-2/6' type='text' placeholder='姓名' />
+        <input
+          name='contact-0-email'
+          className='input join-item input-bordered w-4/6'
+          type='email'
+          placeholder='Email'
+        />
+        <input
+          name='contact-0-name'
+          className='input join-item input-bordered w-2/6'
+          type='text'
+          placeholder='姓名'
+        />
       </div>
     </Block>
     <Block>
@@ -20,8 +30,18 @@ const Contact = memo(() => (
         次要聯絡者
       </h4>
       <div className='join w-full'>
-        <input className='input join-item input-bordered w-4/6' type='email' placeholder='Email' />
-        <input className='input join-item input-bordered w-2/6' type='text' placeholder='姓名' />
+        <input
+          name='contact-1-email'
+          className='input join-item input-bordered w-4/6'
+          type='email'
+          placeholder='Email'
+        />
+        <input
+          name='contact-1-name'
+          className='input join-item input-bordered w-2/6'
+          type='text'
+          placeholder='姓名'
+        />
       </div>
     </Block>
   </div>

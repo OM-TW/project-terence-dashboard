@@ -29,15 +29,17 @@ const Schedule = memo(() => {
           時間表
         </h4>
         <div className='flex w-full flex-col space-y-1'>
-          {list.map((item) => (
+          {list.map((item, index) => (
             <div key={JSON.stringify(item)} className='join w-full'>
               <input
+                name={`schedule-${index}-date`}
                 className='input join-item input-bordered w-2/6'
                 type='text'
                 placeholder='日期(2024-2-22)'
                 defaultValue={item.date}
               />
               <input
+                name={`schedule-${index}-description`}
                 className='input join-item input-bordered w-2/6'
                 type='text'
                 placeholder='描述(5個字)'

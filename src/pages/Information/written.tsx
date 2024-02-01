@@ -12,6 +12,7 @@ const Written = memo(() => (
       </h4>
       <div className='join w-full'>
         <input
+          name='written-date'
           className='input join-item input-bordered w-full'
           placeholder='2024/3/29 18:00-21:00'
         />

@@ -8,19 +8,27 @@ const Oral = memo(() => (
     <Block>
       <h4 className='flex flex-nowrap items-center justify-start'>
         <BsCalendar2DateFill className='mr-1' />
-        口試日期
+        口試公布日期
       </h4>
       <div className='join w-full'>
-        <input className='input join-item input-bordered w-full' placeholder='2024/4/13' />
+        <input
+          name='written-publish-date'
+          className='input join-item input-bordered w-full'
+          placeholder='2024/4/22'
+        />
       </div>
     </Block>
     <Block>
       <h4 className='flex flex-nowrap items-center justify-start'>
         <BsCalendar2DateFill className='mr-1' />
-        口試公布日期
+        口試日期
       </h4>
       <div className='join w-full'>
-        <input className='input join-item input-bordered w-full' placeholder='2024/4/22' />
+        <input
+          name='written-date'
+          className='input join-item input-bordered w-full'
+          placeholder='2024/4/13'
+        />
       </div>
     </Block>
   </div>

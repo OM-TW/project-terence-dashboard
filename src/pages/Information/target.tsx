@@ -12,6 +12,7 @@ const Target = memo(() => (
       </h4>
       <div className='join w-full'>
         <input
+          name='target'
           className='input join-item input-bordered w-full'
           placeholder='升大四至研究所學生(2023.07-08需有在學身分)'
         />
