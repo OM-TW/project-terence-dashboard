@@ -4,7 +4,7 @@ import { Context } from '@/settings/constant';
 import { ActionType } from '@/settings/type';
 import Storage from 'lesca-local-storage';
 import { FormEvent, memo, useCallback, useContext, useEffect } from 'react';
-import coverImage from './img/cover.png';
+import coverImage from './img/ogilvyCover.png';
 
 const Login = memo(() => {
   const [, setContext] = useContext(Context);
@@ -32,7 +32,7 @@ const Login = memo(() => {
           <img src={coverImage} alt='Album' />
         </figure>
         <div className='card-body'>
-          <h2 className='card-title'>Welcome to MMORPG dashboard.</h2>
+          <h2 className='card-title'>Welcome to {import.meta.env.VITE_TITLE}</h2>
           <p>Please Login to continue...</p>
           <form onSubmit={onSubmit}>
             <div className='join join-vertical my-5'>

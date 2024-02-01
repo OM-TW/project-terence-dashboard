@@ -1,13 +1,12 @@
 import { IReactProps } from '@/settings/type';
 import { memo } from 'react';
 import { AiFillDatabase } from 'react-icons/ai';
-import { BsTools } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
-import { SETTING } from '../../../setting';
-import { BiSolidPhotoAlbum } from 'react-icons/bi';
+import { BsInfoSquareFill, BsTools } from 'react-icons/bs';
+import { FaPowerOff } from 'react-icons/fa';
 import { IoDocumentTextSharp } from 'react-icons/io5';
 import { RiDatabaseLine } from 'react-icons/ri';
-import { FaPowerOff } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { SETTING } from '../../../setting';
 
 const Drawer = memo(({ children }: IReactProps) => (
   <div className='drawer lg:drawer-open'>
@@ -23,9 +22,9 @@ const Drawer = memo(({ children }: IReactProps) => (
           TOOLS
         </div>
         <li>
-          <Link to='/album'>
-            <BiSolidPhotoAlbum />
-            Album
+          <Link to='/information'>
+            <BsInfoSquareFill />
+            申請資訊
           </Link>
           <Link to='/editor'>
             <IoDocumentTextSharp />

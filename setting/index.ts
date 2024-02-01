@@ -5,26 +5,15 @@ import { IType, TUploadRespond } from './type';
 export const SETTING = {
   mongodb: [
     {
-      collection: 'user',
-      description: 'user profile schema demonstration',
+      collection: 'application',
+      description: '申請資訊',
       schema: {
-        userID: { type: IType.String, required: true },
-        firstName: { type: IType.String, required: true },
-        lastName: { type: IType.String, required: true },
-        email: { type: IType.String, required: true },
-        photo: { type: IType.String, required: true },
-        age: { type: IType.Number, required: true },
-        timestamp: { type: IType.Date, default: 'Date.now()' },
-      },
-    },
-    {
-      collection: 'todo',
-      description: 'todo list schema demonstration',
-      schema: {
-        task: { type: IType.String, required: true },
-        description: { type: IType.String, required: true },
-        who: { type: IType.String, required: true },
-        done: { type: IType.Boolean, default: false },
+        contacts: { type: IType.String, required: true },
+        general: { type: IType.String, required: true },
+        written: { type: IType.String, required: true },
+        oral: { type: IType.String, required: true },
+        target: { type: IType.String, required: true },
+        schedule: { type: IType.String, required: true },
         timestamp: { type: IType.Date, default: 'Date.now()' },
       },
     },
