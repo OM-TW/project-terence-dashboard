@@ -1,10 +1,27 @@
 import { Context } from '@/settings/constant';
 import { ActionType, AlertType, IReactProps } from '@/settings/type';
-import { memo, useContext } from 'react';
+import { memo, useContext, useEffect } from 'react';
 import './index.less';
+import { DataToComma } from './misc';
+import useInsert from '@/hooks/useInsert';
+import { SETTING } from '../../../setting';
 
-const Form = memo(({ children }: IReactProps) => {
+type T = IReactProps & {
+  reload: () => Promise<void>;
+};
+
+const Form = memo(({ children }: T) => {
+  const [respond, saveData] = useInsert();
   const [, setContext] = useContext(Context);
+
+  useEffect(() => {
+    if (respond) {
+      setContext({
+        type: ActionType.Alert,
+        state: { enabled: true, body: '儲存成功', type: AlertType.Success },
+      });
+    }
+  }, [respond]);
 
   const onError = (message: string) => {
     setContext({
@@ -20,7 +37,7 @@ const Form = memo(({ children }: IReactProps) => {
     const data = [...formData];
 
     // contact
-    const contact = data
+    const contacts = data
       .filter(([key]) => key.startsWith('contact'))
       .reduce(
         (prev, next) => {
@@ -32,7 +49,7 @@ const Form = memo(({ children }: IReactProps) => {
         [] as Record<string, string>[],
       );
     if (
-      contact.filter((item) => Object.values(item).filter((value) => value === '').length > 0)
+      contacts.filter((item) => Object.values(item).filter((value) => value === '').length > 0)
         .length > 0
     ) {
       // empty field
@@ -103,9 +120,8 @@ const Form = memo(({ children }: IReactProps) => {
       return;
     }
 
-    const currentData = { contact, general, written, oral, target, schedule };
-
-    console.log(currentData);
+    const currentData = DataToComma({ contacts, general, written, oral, target, schedule });
+    saveData({ collection: SETTING.mongodb[0].collection, data: currentData });
   };
 
   return (

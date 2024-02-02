@@ -27,23 +27,15 @@ export const SETTING = {
 };
 
 // set type for mongodb
-export type TType =
-  | {
-      userID: string;
-      firstName: string;
-      lastName: string;
-      email: string;
-      photo: string;
-      age: number;
-      timestamp: string;
-    }
-  | {
-      task: string;
-      description: string;
-      who: string;
-      done: boolean;
-      timestamp: Date;
-    };
+export type TType = {
+  contacts: string;
+  general: string;
+  written: string;
+  oral: string;
+  target: string;
+  schedule: string;
+  timestamp: number;
+};
 
 // type for api respond
 export type IRespond = ReadyOnly<{

@@ -21,6 +21,7 @@
     "cloudinary": "^2.0.0",
     "draft-js": "^0.11.7",
     "draft-js-export-html": "^1.4.1",
+    "lesca-comma-string": "^1.0.1",
     "lesca-fetcher": "^1.1.7",
     "lesca-local-storage": "^1.1.2",
     "lesca-react-capture-button": "^2.1.1",
