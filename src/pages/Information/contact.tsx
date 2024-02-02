@@ -9,11 +9,10 @@ type TData = {
   name: string;
 }[];
 
-const Contact = memo(({ data }: { data: TType }) => {
-  const currentData = useMemo<TData>(
-    () => CommaStringToList(data.contacts, ['email', 'name']) as TData,
-    [data],
-  );
+const Contact = memo(({ data }: { data: TType | null }) => {
+  const currentData = useMemo(() => {
+    if (data) return CommaStringToList(data.contacts, ['email', 'name']) as TData;
+  }, [data]);
   return (
     <div className='w-full space-y-5'>
       <Block>
@@ -27,14 +26,14 @@ const Contact = memo(({ data }: { data: TType }) => {
             className='input join-item input-bordered w-4/6'
             type='email'
             placeholder='Email'
-            defaultValue={currentData[0]?.email || ''}
+            defaultValue={currentData?.[0]?.email || ''}
           />
           <input
             name='contact-0-name'
             className='input join-item input-bordered w-2/6'
             type='text'
             placeholder='姓名'
-            defaultValue={currentData[0]?.name || ''}
+            defaultValue={currentData?.[0]?.name || ''}
           />
         </div>
       </Block>
@@ -49,14 +48,14 @@ const Contact = memo(({ data }: { data: TType }) => {
             className='input join-item input-bordered w-4/6'
             type='email'
             placeholder='Email'
-            defaultValue={currentData[1]?.email || ''}
+            defaultValue={currentData?.[1]?.email || ''}
           />
           <input
             name='contact-1-name'
             className='input join-item input-bordered w-2/6'
             type='text'
             placeholder='姓名'
-            defaultValue={currentData[1]?.name || ''}
+            defaultValue={currentData?.[1]?.name || ''}
           />
         </div>
       </Block>

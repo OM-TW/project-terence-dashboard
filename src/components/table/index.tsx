@@ -3,21 +3,19 @@ import { forwardRef, useEffect, useImperativeHandle } from 'react';
 import { SETTING } from '../../../setting';
 import Delete from './delete';
 import Edit from './edit';
-import { RiDeleteBin5Line } from 'react-icons/ri';
-import { TbEdit } from 'react-icons/tb';
 
 const { schema } = SETTING.mongodb[0];
 type TProps = { type: typeof schema; collection: string };
 
 const Table = forwardRef(({ type, collection }: TProps, ref) => {
-  const [data, getUsers] = useSelect();
+  const [data, getUsers] = useSelect({ collection });
   const currentData = data?.data ? data.data : [];
 
   useEffect(() => {
-    getUsers({ collection });
+    getUsers();
   }, [collection]);
 
-  const update = () => getUsers({ collection });
+  const update = () => getUsers();
   useImperativeHandle(ref, () => ({ update }));
 
   return (
@@ -53,13 +51,13 @@ const Table = forwardRef(({ type, collection }: TProps, ref) => {
                       })}
                     <td>
                       <Delete update={update} collection={collection} data={item}>
-                        <RiDeleteBin5Line />
+                        {/* <RiDeleteBin5Line /> */}
                         Delete
                       </Delete>
                     </td>
                     <td>
                       <Edit type={type} update={update} collection={collection} data={item}>
-                        <TbEdit />
+                        {/* <TbEdit /> */}
                         Edit
                       </Edit>
                     </td>

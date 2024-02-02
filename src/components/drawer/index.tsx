@@ -7,6 +7,7 @@ import { IoDocumentTextSharp } from 'react-icons/io5';
 import { RiDatabaseLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import { SETTING } from '../../../setting';
+import { COLLECTION_HIDE } from '@/settings/config';
 
 const Drawer = memo(({ children }: IReactProps) => (
   <div className='drawer lg:drawer-open'>
@@ -31,20 +32,24 @@ const Drawer = memo(({ children }: IReactProps) => (
             Editor
           </Link>
         </li>
-        <div className='flex w-full flex-row items-center justify-start py-5'>
-          <AiFillDatabase className='mr-1' />
-          COLLECTION LIST
-        </div>
-        <li>
-          {SETTING.mongodb.map((collection) => {
-            return (
-              <Link key={collection.collection} to={`/${collection.collection}`}>
-                <RiDatabaseLine />
-                {collection.collection}
-              </Link>
-            );
-          })}
-        </li>
+        {!COLLECTION_HIDE && (
+          <>
+            <div className='flex w-full flex-row items-center justify-start py-5'>
+              <AiFillDatabase className='mr-1' />
+              COLLECTION LIST
+            </div>
+            <li>
+              {SETTING.mongodb.map((collection) => {
+                return (
+                  <Link key={collection.collection} to={`/${collection.collection}`}>
+                    <RiDatabaseLine />
+                    {collection.collection}
+                  </Link>
+                );
+              })}
+            </li>
+          </>
+        )}
         <div className='absolute bottom-0 left-0 flex w-full flex-row items-center justify-start py-5'>
           <ul className='menu relative min-h-full w-80 bg-base-200 p-4 text-base-content'>
             <li>

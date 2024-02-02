@@ -4,9 +4,9 @@ import { BsCalendar2DateFill } from 'react-icons/bs';
 import './index.less';
 import { TType } from '../../../setting';
 
-const Oral = memo(({ data }: { data: TType }) => {
+const Oral = memo(({ data }: { data: TType | null }) => {
   const currentData = useMemo(() => {
-    return data.oral.split(',');
+    return data?.oral.split(',');
   }, [data]);
   return (
     <div className='w-full space-y-5'>
@@ -20,7 +20,7 @@ const Oral = memo(({ data }: { data: TType }) => {
             name='oral-publish-date'
             className='input join-item input-bordered w-full'
             placeholder='2024/4/22'
-            defaultValue={currentData[0] || ''}
+            defaultValue={currentData?.[0] || ''}
           />
         </div>
       </Block>
@@ -34,7 +34,7 @@ const Oral = memo(({ data }: { data: TType }) => {
             name='oral-date'
             className='input join-item input-bordered w-full'
             placeholder='2024/4/13'
-            defaultValue={currentData[1] || ''}
+            defaultValue={currentData?.[1] || ''}
           />
         </div>
       </Block>

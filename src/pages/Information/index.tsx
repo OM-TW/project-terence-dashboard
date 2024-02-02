@@ -13,20 +13,14 @@ import Schedule from './schedule';
 import Target from './target';
 import Written from './written';
 
+type TRespondType = TType & { _id: string };
+
 const Information = memo(() => {
   const [data, getData] = useSelect({ collection: SETTING.mongodb[0].collection });
 
-  const currentData = useMemo<TType>(() => {
-    if (data && data.res) return data.data[0];
-    return {
-      contacts: '',
-      general: '',
-      oral: '',
-      schedule: '',
-      target: '',
-      written: '',
-      timestamp: Date.now(),
-    };
+  const currentData = useMemo<TRespondType | null>(() => {
+    if (data && data.res) return data.data[0] as TRespondType;
+    return null;
   }, [data]);
 
   console.log(currentData);
@@ -34,7 +28,7 @@ const Information = memo(() => {
   return (
     <div className='Information'>
       <h2 className='text-2xl'>申請資訊</h2>
-      <Form reload={getData}>
+      <Form reload={getData} id={currentData ? currentData._id : false}>
         <Tab>
           <Tab.Panel defaultChecked label='聯絡者'>
             <Contact data={currentData} />

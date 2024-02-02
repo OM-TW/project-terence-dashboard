@@ -4,8 +4,8 @@ import { PiGraduationCapFill } from 'react-icons/pi';
 import './index.less';
 import { TType } from '../../../setting';
 
-const Target = memo(({ data }: { data: TType }) => {
-  const currentData = useMemo(() => data.target, [data]);
+const Target = memo(({ data }: { data: TType | null }) => {
+  const currentData = useMemo(() => data?.target, [data]);
   return (
     <div className='w-full space-y-5'>
       <Block>

@@ -1,7 +1,7 @@
 import Block from '@/components/block';
 import { Context } from '@/settings/constant';
 import { ActionType, AlertType } from '@/settings/type';
-import { memo, useContext, useMemo, useRef, useState } from 'react';
+import { memo, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { ImCalendar } from 'react-icons/im';
@@ -12,15 +12,20 @@ import { CommaStringToList } from 'lesca-comma-string';
 
 type TData = { date: string; description: string }[];
 
-const Schedule = memo(({ data }: { data: TType }) => {
-  const currentData = useMemo(
-    () => CommaStringToList(data.schedule, ['date', 'description']) as TData,
-    [data],
-  );
+const Schedule = memo(({ data }: { data: TType | null }) => {
+  const currentData = useMemo(() => {
+    if (data) return CommaStringToList(data.schedule, ['date', 'description']) as TData;
+  }, [data]);
+
   const [, setContext] = useContext(Context);
   const descriptionInputFieldRef = useRef<HTMLInputElement>(null);
   const [pickDate, setPickDate] = useState<Date | null>(new Date());
-  const [list, setList] = useState<TData>(currentData);
+  const [list, setList] = useState<TData>(currentData || []);
+
+  useEffect(() => {
+    if (currentData && currentData.length > 0) setList(currentData);
+  }, [currentData]);
+
   const addOne = () => {
     if (descriptionInputFieldRef.current) {
       const description = descriptionInputFieldRef.current.value;
@@ -36,6 +41,7 @@ const Schedule = memo(({ data }: { data: TType }) => {
       }
     }
   };
+
   return (
     <div className='w-full space-y-5'>
       <Block>

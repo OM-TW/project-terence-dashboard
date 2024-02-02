@@ -1,27 +1,37 @@
+import useInsert from '@/hooks/useInsert';
+import useUpdate from '@/hooks/useUpdate';
 import { Context } from '@/settings/constant';
 import { ActionType, AlertType, IReactProps } from '@/settings/type';
 import { memo, useContext, useEffect } from 'react';
+import { SETTING } from '../../../setting';
 import './index.less';
 import { DataToComma } from './misc';
-import useInsert from '@/hooks/useInsert';
-import { SETTING } from '../../../setting';
 
 type T = IReactProps & {
   reload: () => Promise<void>;
+  id: string | false;
 };
 
-const Form = memo(({ children }: T) => {
-  const [respond, saveData] = useInsert();
+const Form = memo(({ children, id }: T) => {
+  const [saveRespond, saveData] = useInsert();
+  const [updateRespond, updateData] = useUpdate();
+
   const [, setContext] = useContext(Context);
 
   useEffect(() => {
-    if (respond) {
+    if (saveRespond) {
       setContext({
         type: ActionType.Alert,
         state: { enabled: true, body: '儲存成功', type: AlertType.Success },
       });
     }
-  }, [respond]);
+    if (updateRespond) {
+      setContext({
+        type: ActionType.Alert,
+        state: { enabled: true, body: '儲存成功', type: AlertType.Success },
+      });
+    }
+  }, [saveRespond, updateRespond]);
 
   const onError = (message: string) => {
     setContext({
@@ -121,7 +131,12 @@ const Form = memo(({ children }: T) => {
     }
 
     const currentData = DataToComma({ contacts, general, written, oral, target, schedule });
-    saveData({ collection: SETTING.mongodb[0].collection, data: currentData });
+    if (id)
+      updateData({
+        collection: SETTING.mongodb[0].collection,
+        data: { _id: id, data: currentData },
+      });
+    else saveData({ collection: SETTING.mongodb[0].collection, data: currentData });
   };
 
   return (

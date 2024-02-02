@@ -18,3 +18,5 @@ export const CAPTURE_PROPERTY = {
   maxWidth: 500,
   compress: 0.5,
 };
+
+export const COLLECTION_HIDE = true;
