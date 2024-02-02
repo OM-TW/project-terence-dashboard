@@ -12,7 +12,7 @@ const Oral = memo(() => (
       </h4>
       <div className='join w-full'>
         <input
-          name='written-publish-date'
+          name='oral-publish-date'
           className='input join-item input-bordered w-full'
           placeholder='2024/4/22'
         />
@@ -25,7 +25,7 @@ const Oral = memo(() => (
       </h4>
       <div className='join w-full'>
         <input
-          name='written-date'
+          name='oral-date'
           className='input join-item input-bordered w-full'
           placeholder='2024/4/13'
         />

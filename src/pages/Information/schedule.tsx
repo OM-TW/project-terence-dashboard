@@ -1,23 +1,32 @@
 import Block from '@/components/block';
-import { memo, useEffect, useRef, useState } from 'react';
+import { Context } from '@/settings/constant';
+import { ActionType, AlertType } from '@/settings/type';
+import { memo, useContext, useRef, useState } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import { ImCalendar } from 'react-icons/im';
+import { IoAddCircle, IoRemoveCircle } from 'react-icons/io5';
 import './index.less';
 
 type TData = Record<string, string>[];
 
 const Schedule = memo(() => {
-  const DateInputFieldRef = useRef<HTMLInputElement>(null);
+  const [, setContext] = useContext(Context);
   const descriptionInputFieldRef = useRef<HTMLInputElement>(null);
+  const [pickDate, setPickDate] = useState<Date | null>(new Date());
   const [list, setList] = useState<TData>([]);
-  useEffect(() => {}, []);
   const addOne = () => {
-    if (DateInputFieldRef.current && descriptionInputFieldRef.current) {
-      const date = DateInputFieldRef.current.value;
+    if (descriptionInputFieldRef.current) {
       const description = descriptionInputFieldRef.current.value;
-      if (date && description) {
-        setList((prev) => [...prev, { date, description }]);
-        DateInputFieldRef.current.value = '';
+      if (pickDate && description) {
+        setList((prev) => [...prev, { date: pickDate.toLocaleDateString('sv-SE'), description }]);
+        setPickDate(new Date());
         descriptionInputFieldRef.current.value = '';
+      } else {
+        setContext({
+          type: ActionType.Alert,
+          state: { enabled: true, body: '欄位不可留白', type: AlertType.Error },
+        });
       }
     }
   };
@@ -30,7 +39,7 @@ const Schedule = memo(() => {
         </h4>
         <div className='flex w-full flex-col space-y-1'>
           {list.map((item, index) => (
-            <div key={JSON.stringify(item)} className='join w-full'>
+            <div key={JSON.stringify(item) + index} className='join w-full'>
               <input
                 name={`schedule-${index}-date`}
                 className='input join-item input-bordered w-2/6'
@@ -52,17 +61,13 @@ const Schedule = memo(() => {
                 }}
                 className='btn btn-error join-item'
               >
+                <IoRemoveCircle />
                 移除
               </button>
             </div>
           ))}
-          <div className='join w-full'>
-            <input
-              ref={DateInputFieldRef}
-              className='input join-item input-bordered w-2/6'
-              type='text'
-              placeholder='日期(2024-2-22)'
-            />
+          <div className='addScheduleGroup join w-full'>
+            <DatePicker selected={pickDate} onChange={(date: Date) => setPickDate(date)} />
             <input
               ref={descriptionInputFieldRef}
               className='input join-item input-bordered w-2/6'
@@ -70,7 +75,7 @@ const Schedule = memo(() => {
               placeholder='描述(5個字)'
             />
             <button type='button' onClick={addOne} className='btn btn-success join-item'>
-              新增
+              <IoAddCircle /> 新增
             </button>
           </div>
         </div>
