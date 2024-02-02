@@ -17,13 +17,10 @@ type TRespondType = TType & { _id: string };
 
 const Information = memo(() => {
   const [data, getData] = useSelect({ collection: SETTING.mongodb[0].collection });
-
   const currentData = useMemo<TRespondType | null>(() => {
     if (data && data.res) return data.data[0] as TRespondType;
     return null;
   }, [data]);
-
-  console.log(currentData);
 
   return (
     <div className='Information'>

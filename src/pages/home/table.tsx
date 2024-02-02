@@ -2,7 +2,6 @@ import { Debug } from '@/settings/type-unity';
 import { memo, useMemo } from 'react';
 import { SETTING } from '../../../setting';
 import './index.less';
-import { IType } from '../../../setting/type';
 
 type T = typeof SETTING.mongodb;
 
@@ -13,23 +12,21 @@ const Table = memo(({ data }: Debug<{ data: T }>) => {
 
   const { schema } = currentData;
   const table = useMemo(() => {
-    return Object.entries(schema).map(
-      (each: [string, { type: IType; required: boolean; default: string }]) => {
-        const [tableName, tableValue] = each;
+    return Object.entries(schema).map((each: [string, Record<string, any>]) => {
+      const [tableName, tableValue] = each;
 
-        const { type, required, default: def } = tableValue;
-        let requiredDefault = '';
+      const { type, required, default: def } = tableValue;
+      let requiredDefault = '';
 
-        if (required !== undefined) {
-          requiredDefault = 'required : ' + JSON.stringify(required).split('"').join('');
-        }
+      if (required !== undefined) {
+        requiredDefault = 'required : ' + JSON.stringify(required).split('"').join('');
+      }
 
-        if (def !== undefined) {
-          requiredDefault = 'default : ' + JSON.stringify(def).split('"').join('');
-        }
-        return [tableName, type, requiredDefault];
-      },
-    );
+      if (def !== undefined) {
+        requiredDefault = 'default : ' + JSON.stringify(def).split('"').join('');
+      }
+      return [tableName, type, requiredDefault];
+    });
   }, [schema]);
 
   return (
@@ -58,9 +55,9 @@ const Table = memo(({ data }: Debug<{ data: T }>) => {
                     <table className='table table-xs'>
                       <thead>
                         <tr>
-                          <th>table name</th>
-                          <th>type</th>
-                          <th>setting</th>
+                          <th className='text-primary'>table name</th>
+                          <th className='text-primary'>type</th>
+                          <th className='text-primary'>setting</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -74,9 +71,9 @@ const Table = memo(({ data }: Debug<{ data: T }>) => {
                       </tbody>
                       <tfoot>
                         <tr>
-                          <th>table name</th>
-                          <th>type</th>
-                          <th>setting</th>
+                          <th className='text-secondary-content'>table name</th>
+                          <th className='text-secondary-content'>type</th>
+                          <th className='text-secondary-content'>setting</th>
                         </tr>
                       </tfoot>
                     </table>

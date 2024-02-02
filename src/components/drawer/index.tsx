@@ -1,13 +1,12 @@
+import { COLLECTION_HIDE } from '@/settings/config';
 import { IReactProps } from '@/settings/type';
 import { memo } from 'react';
 import { AiFillDatabase } from 'react-icons/ai';
 import { BsInfoSquareFill, BsTools } from 'react-icons/bs';
 import { FaPowerOff } from 'react-icons/fa';
-import { IoDocumentTextSharp } from 'react-icons/io5';
 import { RiDatabaseLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import { SETTING } from '../../../setting';
-import { COLLECTION_HIDE } from '@/settings/config';
 
 const Drawer = memo(({ children }: IReactProps) => (
   <div className='drawer lg:drawer-open'>
@@ -27,10 +26,10 @@ const Drawer = memo(({ children }: IReactProps) => (
             <BsInfoSquareFill />
             申請資訊
           </Link>
-          <Link to='/editor'>
+          {/* <Link to='/editor'>
             <IoDocumentTextSharp />
             Editor
-          </Link>
+          </Link> */}
         </li>
         {!COLLECTION_HIDE && (
           <>
