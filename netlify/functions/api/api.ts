@@ -11,6 +11,7 @@ import deleteOne from './delete';
 import insert, { insertMany } from './insert';
 import select from './select';
 import update from './update';
+import { SETTING } from '../../../setting';
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 const api = express();
@@ -142,6 +143,16 @@ router.post(`/${REST_PATH.removeMany}`, async (req, res) => {
     });
   } catch (e) {
     res.status(200).json({ res: false, msg: messages.uploadError });
+  }
+});
+
+router.get(`/${REST_PATH.init}`, async (_, res) => {
+  const connection = await connect();
+  if (!connection.res) {
+    res.status(200).json({ res: false, msg: messages.connectError });
+  } else {
+    const respond = await select({ collection: SETTING.mongodb[0].collection });
+    res.status(200).json(respond);
   }
 });
 

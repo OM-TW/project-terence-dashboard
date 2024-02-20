@@ -12,6 +12,8 @@ export const REST_PATH = {
   search: 'search',
   remove: 'remove',
   removeMany: 'removeMany',
+  // open api
+  init: 'init',
 };
 
 export const CAPTURE_PROPERTY = {
