@@ -61,7 +61,7 @@ const RichEditor = forwardRef(({ defaultHTML, onChange }: T, ref: Ref<RefObject>
           'fontSize',
           'fontFamily',
           'list',
-          'textAlign',
+          // 'textAlign',
           // 'colorPicker',
           'link',
           'embedded',
