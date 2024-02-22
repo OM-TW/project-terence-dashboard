@@ -1,20 +1,20 @@
 .Editor {
   @apply w-full;
 
-  * {
-    @apply text-center;
+  .richEditor {
+    @apply bg-white text-black;
 
-    div {
-      @apply text-black;
+    * {
+      @apply text-center;
+
+      div {
+        @apply text-gray-800;
+      }
+
+      a:not(.rdw-dropdown-selectedtext) {
+        @apply text-red-500;
+      }
     }
-
-    a:not(.rdw-dropdown-selectedtext) {
-      @apply text-red-500;
-    }
-  }
-
-  textarea {
-    @apply bg-white text-base-100;
   }
 
   h1 {

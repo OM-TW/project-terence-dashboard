@@ -29,7 +29,7 @@ const Editor = memo(({ onSubmit, defaultHTML }: T) => {
             <div className='w-full bg-base-300 py-2 text-center' style={{ color: '#fff' }}>
               Rich Editor
             </div>
-            <div className='bg-white text-black'>
+            <div className='richEditor'>
               <RichEditor
                 defaultHTML={defaultHTML}
                 onChange={(h) => {
@@ -47,7 +47,7 @@ const Editor = memo(({ onSubmit, defaultHTML }: T) => {
               HTML Editor
             </div>
             <textarea
-              className='h-52 w-full'
+              className='h-96 w-full'
               value={html}
               onChange={(e) => {
                 setHTML(e.target.value);
