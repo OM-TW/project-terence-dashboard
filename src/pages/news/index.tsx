@@ -15,7 +15,6 @@ const News = memo(() => {
   const [html] = useSelect({ collection: SETTING.mongodb[1].collection });
   const [insertRespond, getInsert] = useInsert();
   const [updateRespond, getUpdate] = useUpdate();
-  console.log(html);
 
   useEffect(() => {
     if (insertRespond?.res) {
