@@ -17,6 +17,14 @@ export const SETTING = {
         timestamp: { type: IType.Date, default: 'Date.now()' },
       },
     },
+    {
+      collection: 'news',
+      description: '最新消息',
+      schema: {
+        html: { type: IType.String, required: true },
+        timestamp: { type: IType.Date, default: 'Date.now()' },
+      },
+    },
   ],
   dashboard: {
     session: {
@@ -27,15 +35,20 @@ export const SETTING = {
 };
 
 // set type for mongodb
-export type TType = {
-  contacts: string;
-  general: string;
-  written: string;
-  oral: string;
-  target: string;
-  schedule: string;
-  timestamp: number;
-};
+export type TType =
+  | {
+      contacts: string;
+      general: string;
+      written: string;
+      oral: string;
+      target: string;
+      schedule: string;
+      timestamp: number;
+    }
+  | {
+      html: string;
+      timestamp: number;
+    };
 
 // type for api respond
 export type IRespond = ReadyOnly<{

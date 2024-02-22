@@ -4,9 +4,11 @@ import { memo } from 'react';
 import { AiFillDatabase } from 'react-icons/ai';
 import { BsInfoSquareFill, BsTools } from 'react-icons/bs';
 import { FaPowerOff } from 'react-icons/fa';
+import { FaNewspaper } from 'react-icons/fa6';
 import { RiDatabaseLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import { SETTING } from '../../../setting';
+import { BiSolidPhotoAlbum } from 'react-icons/bi';
 
 const Drawer = memo(({ children }: IReactProps) => (
   <div className='drawer lg:drawer-open'>
@@ -22,14 +24,18 @@ const Drawer = memo(({ children }: IReactProps) => (
           TOOLS
         </div>
         <li>
+          <Link to='/news'>
+            <FaNewspaper />
+            最新消息
+          </Link>
           <Link to='/information'>
             <BsInfoSquareFill />
             申請資訊
           </Link>
-          {/* <Link to='/editor'>
-            <IoDocumentTextSharp />
-            Editor
-          </Link> */}
+          <Link to='/album'>
+            <BiSolidPhotoAlbum />
+            照片管理
+          </Link>
         </li>
         {!COLLECTION_HIDE && (
           <>

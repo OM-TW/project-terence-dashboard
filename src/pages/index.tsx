@@ -18,6 +18,7 @@ import Album from './album';
 import Edit from './editor';
 import Home from './home';
 import Login from './login';
+import News from './news';
 
 Fetcher.install({
   hostUrl: import.meta.env.VITE_API_PATH || './api',
@@ -47,6 +48,7 @@ const RoutePages = memo(() => {
       <Route path='/' element={<Home />} />
       <Route path='/home' element={<Home />} />
       <Route path='/information' element={<Information />} />
+      <Route path='/news' element={<News />} />
       <Route path='/album' element={<Album />} />
       <Route path='/editor' element={<Edit />} />
       <Route path='*' element={ComponentLoader()} />

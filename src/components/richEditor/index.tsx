@@ -25,7 +25,7 @@ const Editor = memo(({ onSubmit, defaultHTML }: T) => {
     <div className='Editor prose flex max-w-full flex-row p-5'>
       <div className='flex-1'>
         <Tab>
-          <Tab.Panel label='Rich Editor'>
+          <Tab.Panel label='Rich Editor' defaultChecked>
             <div className='w-full bg-base-300 py-2 text-center text-primary'>Rich Editor</div>
             <div className='bg-white text-black'>
               <RichEditor
