@@ -9,7 +9,7 @@ type TData = {
   name: string;
 }[];
 
-const Contact = memo(({ data }: { data: TType | null }) => {
+const Contact = memo(({ data }: { data: Extract<TType, { contacts: string }> | null }) => {
   const currentData = useMemo(() => {
     if (data) return CommaStringToList(data.contacts, ['email', 'name']) as TData;
   }, [data]);

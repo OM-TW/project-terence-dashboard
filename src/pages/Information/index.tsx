@@ -13,7 +13,7 @@ import Schedule from './schedule';
 import Target from './target';
 import Written from './written';
 
-type TRespondType = TType & { _id: string };
+type TRespondType = Extract<TType, { contacts: string }> & { _id: string };
 
 const Information = memo(() => {
   const [data, getData] = useSelect({ collection: SETTING.mongodb[0].collection });

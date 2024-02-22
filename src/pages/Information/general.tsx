@@ -4,7 +4,7 @@ import { BsCalendar2DateFill } from 'react-icons/bs';
 import './index.less';
 import { TType } from '../../../setting';
 
-const General = memo(({ data }: { data: TType | null }) => {
+const General = memo(({ data }: { data: Extract<TType, { contacts: string }> | null }) => {
   const currentData = useMemo(() => data?.general, [data]);
   return (
     <div className='w-full space-y-5'>

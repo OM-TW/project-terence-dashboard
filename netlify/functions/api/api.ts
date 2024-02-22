@@ -151,8 +151,9 @@ router.get(`/${REST_PATH.init}`, async (_, res) => {
   if (!connection.res) {
     res.status(200).json({ res: false, msg: messages.connectError });
   } else {
-    const respond = await select({ collection: SETTING.mongodb[0].collection });
-    res.status(200).json({ schedule: respond });
+    const schedule = await select({ collection: SETTING.mongodb[0].collection });
+    const news = await select({ collection: SETTING.mongodb[1].collection });
+    res.status(200).json({ schedule, news });
   }
 });
 

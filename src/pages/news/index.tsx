@@ -8,6 +8,8 @@ import './index.less';
 import { Context } from '@/settings/constant';
 import { ActionType } from '@/settings/type';
 
+type TRespondType = Extract<TType, { html: string }> & { _id: string };
+
 const News = memo(() => {
   const [, setContext] = useContext(Context);
   const [html] = useSelect({ collection: SETTING.mongodb[1].collection });
@@ -42,7 +44,7 @@ const News = memo(() => {
         data: { html: finalHTML, timestamp: Date.now() },
       });
     } else {
-      const respondData = html?.data[0] as Extract<TType, { html: string }> & { _id: string };
+      const respondData = html?.data[0] as TRespondType;
       getUpdate({
         collection: SETTING.mongodb[1].collection,
         data: { _id: respondData._id, data: { html: finalHTML } },

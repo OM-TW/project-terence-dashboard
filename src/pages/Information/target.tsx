@@ -4,7 +4,7 @@ import { PiGraduationCapFill } from 'react-icons/pi';
 import './index.less';
 import { TType } from '../../../setting';
 
-const Target = memo(({ data }: { data: TType | null }) => {
+const Target = memo(({ data }: { data: Extract<TType, { contacts: string }> | null }) => {
   const currentData = useMemo(() => data?.target, [data]);
   return (
     <div className='w-full space-y-5'>
