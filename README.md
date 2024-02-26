@@ -13,7 +13,7 @@
   <a href="https://github.com/jameshsu1125">
     <img src="./public/img/Ogilvy_Logo.png" alt="Logo" width=144 >
   </a>
-  <h3 align="center">Ogilvy Project Terence</h3>
+  <h3 align="center">Project Terence</h3>
   <p align="center">
     CMS dashboard
   </p>
