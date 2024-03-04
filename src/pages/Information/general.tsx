@@ -1,7 +1,6 @@
 import Block from '@/components/block';
 import { memo, useMemo } from 'react';
 import { BsCalendar2DateFill } from 'react-icons/bs';
-import './index.less';
 import { TType } from '../../../setting';
 
 const General = memo(({ data }: { data: Extract<TType, { contacts: string }> | null }) => {

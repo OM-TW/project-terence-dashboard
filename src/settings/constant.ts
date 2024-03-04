@@ -7,6 +7,7 @@ import {
   LoadingProcessType,
   TAlertState,
   TContext,
+  TDialogState,
   TLoadingProcessState,
   TModalState,
   TStatusState,
@@ -38,11 +39,17 @@ export const ModalState: TModalState = {
   onClose: () => {},
 };
 
+export const DialogState: TDialogState = {
+  enabled: true,
+  body: '',
+};
+
 export const InitialState: IState = {
   [ActionType.LoadingProcess]: LoadingProcessState,
   [ActionType.Status]: StatusState,
   [ActionType.Alert]: AlertState,
-  [ActionType.modal]: ModalState,
+  [ActionType.Modal]: ModalState,
+  [ActionType.Dialog]: DialogState,
 };
 
 export const Context = createContext<TContext>([InitialState, () => {}]);

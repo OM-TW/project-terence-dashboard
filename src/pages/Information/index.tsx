@@ -7,6 +7,7 @@ import { SETTING, TType } from '../../../setting';
 import Contact from './contact';
 import Form from './form';
 import General from './general';
+import GoogleForm from './googleForm';
 import './index.less';
 import Oral from './oral';
 import Schedule from './schedule';
@@ -17,6 +18,7 @@ type TRespondType = Extract<TType, { contacts: string }> & { _id: string };
 
 const Information = memo(() => {
   const [data, getData] = useSelect({ collection: SETTING.mongodb[0].collection });
+
   const currentData = useMemo<TRespondType | null>(() => {
     if (data && data.res) return data.data[0] as TRespondType;
     return null;
@@ -27,7 +29,10 @@ const Information = memo(() => {
       <h2 className='text-2xl'>申請資訊</h2>
       <Form reload={getData} id={currentData ? currentData._id : false}>
         <Tab>
-          <Tab.Panel defaultChecked label='聯絡者'>
+          <Tab.Panel label='報名表單' defaultChecked>
+            <GoogleForm data={currentData} />
+          </Tab.Panel>
+          <Tab.Panel label='聯絡者'>
             <Contact data={currentData} />
           </Tab.Panel>
           <Tab.Panel label='申請期間'>

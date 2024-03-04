@@ -1,22 +1,23 @@
 import Block from '@/components/block';
 import { memo, useMemo } from 'react';
-import { BsCalendar2DateFill } from 'react-icons/bs';
+import { SiGoogleforms } from 'react-icons/si';
 import { TType } from '../../../setting';
 
-const Written = memo(({ data }: { data: Extract<TType, { contacts: string }> | null }) => {
-  const currentData = useMemo(() => data?.written, [data]);
+const GoogleForm = memo(({ data }: { data: Extract<TType, { contacts: string }> | null }) => {
+  const currentData = useMemo(() => data?.formURL, [data]);
+
   return (
     <div className='w-full space-y-5'>
       <Block>
         <h4 className='flex flex-nowrap items-center justify-start'>
-          <BsCalendar2DateFill className='mr-1' />
-          筆試日期
+          <SiGoogleforms className='mr-1' />
+          Google報名表單URL
         </h4>
         <div className='join w-full'>
           <input
-            name='written-date'
+            name='formURL'
             className='input join-item input-bordered w-full'
-            placeholder='2024/3/29 18:00-21:00'
+            placeholder='https://docs.google.com/forms/d/e/xxxxxxxxxxxx/viewform'
             defaultValue={currentData}
           />
         </div>
@@ -24,4 +25,4 @@ const Written = memo(({ data }: { data: Extract<TType, { contacts: string }> | n
     </div>
   );
 });
-export default Written;
+export default GoogleForm;

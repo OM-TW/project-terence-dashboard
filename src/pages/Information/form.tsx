@@ -4,7 +4,6 @@ import { Context } from '@/settings/constant';
 import { ActionType, AlertType, IReactProps } from '@/settings/type';
 import { memo, useContext, useEffect } from 'react';
 import { SETTING } from '../../../setting';
-import './index.less';
 import { DataToComma } from './misc';
 
 type T = IReactProps & {
@@ -45,6 +44,16 @@ const Form = memo(({ children, id }: T) => {
     const formData = new FormData(e.target);
     formData.delete('tab');
     const data = [...formData];
+
+    // formURL
+    const [formURL] = data
+      .filter(([key]) => key.startsWith('formURL'))
+      .map(([, value]) => value.toString());
+
+    if (formURL === '') {
+      onError('google表單');
+      return;
+    }
 
     // contact
     const contacts = data
@@ -130,7 +139,16 @@ const Form = memo(({ children, id }: T) => {
       return;
     }
 
-    const currentData = DataToComma({ contacts, general, written, oral, target, schedule });
+    const currentData = DataToComma({
+      contacts,
+      general,
+      written,
+      oral,
+      target,
+      schedule,
+      formURL,
+    });
+
     if (id)
       updateData({
         collection: SETTING.mongodb[0].collection,

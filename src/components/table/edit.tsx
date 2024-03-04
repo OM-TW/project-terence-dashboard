@@ -146,7 +146,7 @@ const Edit = memo(({ children, type, collection, data, update }: IReactProps & T
     <button
       onClick={() => {
         setContext({
-          type: ActionType.modal,
+          type: ActionType.Modal,
           state: {
             enabled: true,
             title: 'Edit and submit',

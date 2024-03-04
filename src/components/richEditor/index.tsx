@@ -6,13 +6,15 @@ import Tab from '../tab';
 import Album from './album';
 import './index.less';
 import { useDebounce } from '@uidotdev/usehooks';
+import { twMerge } from 'tailwind-merge';
 
 type T = {
   onSubmit: (html: string) => void;
   defaultHTML?: string;
+  gap?: boolean;
 };
 
-const Editor = memo(({ onSubmit, defaultHTML }: T) => {
+const Editor = memo(({ onSubmit, defaultHTML, gap = true }: T) => {
   const ref = useRef<RefObject>(null);
   const [html, setHTML] = useState(defaultHTML || '');
   const debouncedValue = useDebounce(html, 2000);
@@ -22,7 +24,7 @@ const Editor = memo(({ onSubmit, defaultHTML }: T) => {
   }, [debouncedValue]);
 
   return (
-    <div className='Editor prose flex max-w-full flex-row p-5'>
+    <div className={twMerge('Editor prose flex max-w-full flex-row', gap ? 'p-5' : 'pb-5')}>
       <div className='flex-1'>
         <Tab>
           <Tab.Panel label='Rich Editor' defaultChecked>
@@ -57,13 +59,13 @@ const Editor = memo(({ onSubmit, defaultHTML }: T) => {
         </Tab>
         <div className='flex w-full justify-center px-5 pt-10'>
           <Button
-            className='btn-lg btn-block uppercase'
+            className='btn-primary btn-lg btn-block btn-block uppercase'
             onClick={() => {
               onSubmit(ref.current?.getHTML() || '');
             }}
           >
             <IoIosSave />
-            save
+            儲存
           </Button>
         </div>
       </div>

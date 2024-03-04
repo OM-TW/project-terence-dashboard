@@ -6,7 +6,6 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { ImCalendar } from 'react-icons/im';
 import { IoAddCircle, IoRemoveCircle } from 'react-icons/io5';
-import './index.less';
 import { TType } from '../../../setting';
 import { CommaStringToList } from 'lesca-comma-string';
 

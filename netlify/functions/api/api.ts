@@ -57,7 +57,10 @@ router.post(`/${REST_PATH.insert}`, async (req, res) => {
   if (!connection.res) {
     res.status(200).json({ res: false, msg: messages.connectError });
   } else {
+    console.log(req.body);
     const respond = await insert(req.body);
+    console.log(respond);
+
     res.status(200).json(respond);
   }
 });

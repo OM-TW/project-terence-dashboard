@@ -14,6 +14,7 @@ export const SETTING = {
         oral: { type: IType.String, required: true },
         target: { type: IType.String, required: true },
         schedule: { type: IType.String, required: true },
+        formURL: { type: IType.String, required: true },
         timestamp: { type: IType.Date, default: 'Date.now()' },
       },
     },
@@ -21,6 +22,17 @@ export const SETTING = {
       collection: 'news',
       description: '最新消息',
       schema: {
+        html: { type: IType.String, required: true },
+        timestamp: { type: IType.Date, default: 'Date.now()' },
+      },
+    },
+    {
+      collection: 'share',
+      description: '歷屆分享',
+      schema: {
+        session: { type: IType.Number, require: true },
+        name: { type: IType.String, required: true },
+        engName: { type: IType.String, required: true },
         html: { type: IType.String, required: true },
         timestamp: { type: IType.Date, default: 'Date.now()' },
       },
@@ -43,9 +55,17 @@ export type TType =
       oral: string;
       target: string;
       schedule: string;
+      formURL: string;
       timestamp: number;
     }
   | {
+      html: string;
+      timestamp: number;
+    }
+  | {
+      session: string;
+      name: string;
+      engName: string;
       html: string;
       timestamp: number;
     };

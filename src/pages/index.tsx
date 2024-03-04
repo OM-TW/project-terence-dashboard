@@ -1,4 +1,5 @@
 import Alert from '@/components/alert';
+import Dialog from '@/components/dialog';
 import Drawer from '@/components/drawer';
 import LoadingProcess from '@/components/loadingProcess';
 import Modal from '@/components/modal';
@@ -19,6 +20,7 @@ import Edit from './editor';
 import Home from './home';
 import Login from './login';
 import News from './news';
+import Share from './share';
 
 Fetcher.install({
   hostUrl: import.meta.env.VITE_API_PATH || './api',
@@ -49,6 +51,7 @@ const RoutePages = memo(() => {
       <Route path='/home' element={<Home />} />
       <Route path='/information' element={<Information />} />
       <Route path='/news' element={<News />} />
+      <Route path='/share' element={<Share />} />
       <Route path='/album' element={<Album />} />
       <Route path='/editor' element={<Edit />} />
       <Route path='*' element={ComponentLoader()} />
@@ -93,7 +96,8 @@ const App = () => {
       </div>
       {state[ActionType.LoadingProcess]?.enabled && <LoadingProcess />}
       {state[ActionType.Alert]?.enabled && <Alert />}
-      {state[ActionType.modal]?.enabled && <Modal />}
+      {state[ActionType.Modal]?.enabled && <Modal />}
+      {state[ActionType.Dialog]?.enabled && <Dialog />}
     </Context.Provider>
   );
 };

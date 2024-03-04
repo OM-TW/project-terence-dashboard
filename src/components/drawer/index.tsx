@@ -9,6 +9,7 @@ import { RiDatabaseLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import { SETTING } from '../../../setting';
 import { BiSolidPhotoAlbum } from 'react-icons/bi';
+import { MdOutlineHistoryEdu } from 'react-icons/md';
 
 const Drawer = memo(({ children }: IReactProps) => (
   <div className='drawer lg:drawer-open'>
@@ -31,6 +32,10 @@ const Drawer = memo(({ children }: IReactProps) => (
           <Link to='/information'>
             <BsInfoSquareFill />
             申請資訊
+          </Link>
+          <Link to='/share'>
+            <MdOutlineHistoryEdu />
+            經驗分享
           </Link>
           <Link to='/album'>
             <BiSolidPhotoAlbum />

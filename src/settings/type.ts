@@ -5,7 +5,8 @@ export enum ActionType {
   LoadingProcess = 'loadingProcess',
   Status = 'status',
   Alert = 'alert',
-  modal = 'modal',
+  Modal = 'modal',
+  Dialog = 'dialog',
 }
 
 export enum LoadingProcessType {
@@ -58,6 +59,12 @@ export type TAlertState = Debug<
 
 export type TStatusState = Debug<IEnabled>;
 
+export type TDialogState = Debug<
+  IEnabled & {
+    body: ReactNode;
+  }
+>;
+
 export type TModalState = Debug<
   IEnabled & {
     title: string;
@@ -73,6 +80,7 @@ export interface IState {
   status: TStatusState;
   alert: TAlertState;
   modal: TModalState;
+  dialog: TDialogState;
 }
 
 export interface IAction {
@@ -81,7 +89,8 @@ export interface IAction {
     | Partial<TLoadingProcessState>
     | Partial<TStatusState>
     | Partial<TAlertState>
-    | Partial<TModalState>;
+    | Partial<TModalState>
+    | Partial<TDialogState>;
   type: ActionType;
 }
 
@@ -89,4 +98,8 @@ export type TContext = [IState, Dispatch<IAction>];
 
 export interface IReactProps {
   readonly children?: ReactNode;
+}
+
+export interface IRefObject {
+  target: HTMLButtonElement | null;
 }

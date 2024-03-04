@@ -1,7 +1,6 @@
 import Block from '@/components/block';
 import { memo, useMemo } from 'react';
 import { PiGraduationCapFill } from 'react-icons/pi';
-import './index.less';
 import { TType } from '../../../setting';
 
 const Target = memo(({ data }: { data: Extract<TType, { contacts: string }> | null }) => {

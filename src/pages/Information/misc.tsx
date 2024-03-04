@@ -8,14 +8,16 @@ type TData = {
   oral: Record<string, string>;
   target: string;
   schedule: Record<string, string>[];
+  formURL: string;
 };
 
 export const DataToComma = (data: TData): TType => {
-  const { contacts, general, written, oral, target, schedule } = data;
+  const { contacts, general, written, oral, target, schedule, formURL } = data;
   const [currentContacts] = ListToCommaString(contacts);
   const currentOral = Object.values(oral).join(',');
   const currentSchedule = schedule.map((item) => Object.values(item).join(',')).join(',');
   return {
+    formURL,
     contacts: String(currentContacts),
     general,
     written,
