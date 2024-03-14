@@ -2,14 +2,15 @@ import { COLLECTION_HIDE } from '@/settings/config';
 import { IReactProps } from '@/settings/type';
 import { memo } from 'react';
 import { AiFillDatabase } from 'react-icons/ai';
-import { BsInfoSquareFill, BsTools } from 'react-icons/bs';
+import { BiSolidPhotoAlbum } from 'react-icons/bi';
+import { BsInfoSquareFill, BsPersonRaisedHand } from 'react-icons/bs';
 import { FaPowerOff } from 'react-icons/fa';
 import { FaNewspaper } from 'react-icons/fa6';
+import { MdOutlineHistoryEdu } from 'react-icons/md';
 import { RiDatabaseLine } from 'react-icons/ri';
+import { TbTie } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 import { SETTING } from '../../../setting';
-import { BiSolidPhotoAlbum } from 'react-icons/bi';
-import { MdOutlineHistoryEdu } from 'react-icons/md';
 
 const Drawer = memo(({ children }: IReactProps) => (
   <div className='drawer lg:drawer-open'>
@@ -21,8 +22,8 @@ const Drawer = memo(({ children }: IReactProps) => (
       <label htmlFor='my-drawer-2' aria-label='close sidebar' className='drawer-overlay'></label>
       <ul className='menu relative min-h-full w-80 bg-base-200 p-4 text-base-content'>
         <div className='flex w-full flex-row items-center justify-start py-5'>
-          <BsTools className='mr-1' />
-          TOOLS
+          <TbTie className='mr-1' />
+          紅領帶
         </div>
         <li>
           <Link to='/news'>
@@ -42,6 +43,11 @@ const Drawer = memo(({ children }: IReactProps) => (
             照片管理
           </Link>
         </li>
+        <div className='flex w-full flex-row items-center justify-start py-5'>
+          <BsPersonRaisedHand className='mr-1' />
+          人員招募?
+        </div>
+        <li></li>
         {!COLLECTION_HIDE && (
           <>
             <div className='flex w-full flex-row items-center justify-start py-5'>

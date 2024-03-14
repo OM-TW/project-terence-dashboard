@@ -71,7 +71,7 @@ const Items = memo(({ onSubmit, data = DEFAULT_DATA }: T) => {
           <BiRename className='mr-1' />
           文章內文
         </h4>
-        <Editor defaultHTML={data.html} onSubmit={onSubmit} gap={false} />
+        <Editor defaultHTML={data.html} onSubmit={onSubmit} gap={false} textAlign='left' />
       </Block>
     </div>
   );

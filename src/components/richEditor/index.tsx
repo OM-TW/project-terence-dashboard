@@ -12,9 +12,10 @@ type T = {
   onSubmit: (html: string) => void;
   defaultHTML?: string;
   gap?: boolean;
+  textAlign?: 'left' | 'center';
 };
 
-const Editor = memo(({ onSubmit, defaultHTML, gap = true }: T) => {
+const Editor = memo(({ onSubmit, defaultHTML, gap = true, textAlign = 'center' }: T) => {
   const ref = useRef<RefObject>(null);
   const [html, setHTML] = useState(defaultHTML || '');
   const debouncedValue = useDebounce(html, 2000);
@@ -31,7 +32,7 @@ const Editor = memo(({ onSubmit, defaultHTML, gap = true }: T) => {
             <div className='w-full bg-base-300 py-2 text-center' style={{ color: '#fff' }}>
               Rich Editor
             </div>
-            <div className='richEditor'>
+            <div className={twMerge('richEditor', textAlign === 'center' ? 'alignC' : 'alignL')}>
               <RichEditor
                 defaultHTML={defaultHTML}
                 onChange={(h) => {
