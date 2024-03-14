@@ -33,10 +33,10 @@ const Items = memo(({ onSubmit, data = DEFAULT_DATA }: T) => {
           <option disabled value=''>
             請選擇屆數
           </option>
-          {[...new Array(th).keys()].map((v, i) => {
+          {[...new Array(th).keys()].reverse().map((v, i) => {
             const currentValue = v + 1;
             return (
-              <option value={currentValue} key={`th${v}${i}`}>
+              <option value={currentValue} key={`th${v}-${i}`}>
                 第{currentValue}屆({v + 2008 + 1})
               </option>
             );
