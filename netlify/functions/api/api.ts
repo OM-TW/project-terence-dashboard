@@ -156,7 +156,8 @@ router.get(`/${REST_PATH.init}`, async (_, res) => {
   } else {
     const schedule = await select({ collection: SETTING.mongodb[0].collection });
     const news = await select({ collection: SETTING.mongodb[1].collection });
-    res.status(200).json({ schedule, news });
+    const share = await select({ collection: SETTING.mongodb[2].collection });
+    res.status(200).json({ schedule, news, share });
   }
 });
 
