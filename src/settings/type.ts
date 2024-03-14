@@ -61,7 +61,9 @@ export type TStatusState = Debug<IEnabled>;
 
 export type TDialogState = Debug<
   IEnabled & {
+    title: string;
     body: ReactNode;
+    button: { label: string; onClick: () => void } | undefined;
   }
 >;
 

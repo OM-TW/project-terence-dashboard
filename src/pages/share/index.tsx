@@ -1,20 +1,19 @@
 import Tab from '@/components/tab';
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import AddShare from './add';
 import './index.less';
 import UpdateShare from './UpdateShare';
 
-// type TRespondType = Extract<TType, { session: number }> & { _id: string };
-
 const Share = memo(() => {
+  const [key, increaseKey] = useState(0);
   return (
     <div className='Share'>
       <Tab>
         <Tab.Panel label='新增' defaultChecked>
-          <AddShare />
+          <AddShare key={`add${key}`} increaseKey={increaseKey} />
         </Tab.Panel>
         <Tab.Panel label='修改'>
-          <UpdateShare />
+          <UpdateShare key={`update${key}`} />
         </Tab.Panel>
       </Tab>
     </div>

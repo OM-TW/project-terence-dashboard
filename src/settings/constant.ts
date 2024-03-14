@@ -40,8 +40,10 @@ export const ModalState: TModalState = {
 };
 
 export const DialogState: TDialogState = {
-  enabled: true,
-  body: '',
+  enabled: false,
+  title: 'Title',
+  body: 'message',
+  button: { label: 'save', onClick: () => {} },
 };
 
 export const InitialState: IState = {
