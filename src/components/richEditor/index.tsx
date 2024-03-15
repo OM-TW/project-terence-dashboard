@@ -1,12 +1,11 @@
 import Button from '@/components/button';
 import RichEditor, { RefObject } from '@/components/richEditor/draft';
+import { useDebounce } from '@uidotdev/usehooks';
 import { memo, useEffect, useRef, useState } from 'react';
 import { IoIosSave } from 'react-icons/io';
-import Tab from '../tab';
-import Album from './album';
-import './index.less';
-import { useDebounce } from '@uidotdev/usehooks';
 import { twMerge } from 'tailwind-merge';
+import Tab from '../tab';
+import './index.less';
 
 type T = {
   onSubmit: (html: string) => void;
@@ -69,9 +68,6 @@ const Editor = memo(({ onSubmit, defaultHTML, gap = true, textAlign = 'center' }
             儲存
           </Button>
         </div>
-      </div>
-      <div className='w-44'>
-        <Album />
       </div>
     </div>
   );
