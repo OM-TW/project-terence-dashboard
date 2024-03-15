@@ -6,6 +6,7 @@ import { IoIosSave } from 'react-icons/io';
 import { twMerge } from 'tailwind-merge';
 import Tab from '../tab';
 import './index.less';
+import Album from './album';
 
 type T = {
   onSubmit: (html: string) => void;
@@ -59,7 +60,7 @@ const Editor = memo(({ onSubmit, defaultHTML, gap = true, textAlign = 'center' }
         </Tab>
         <div className='flex w-full justify-center px-5 pt-10'>
           <Button
-            className='btn-primary btn-lg btn-block btn-block uppercase'
+            className='btn-primary btn-lg btn-block uppercase'
             onClick={() => {
               onSubmit(ref.current?.getHTML() || '');
             }}
@@ -68,6 +69,9 @@ const Editor = memo(({ onSubmit, defaultHTML, gap = true, textAlign = 'center' }
             儲存
           </Button>
         </div>
+      </div>
+      <div className='w-44'>
+        <Album />
       </div>
     </div>
   );
