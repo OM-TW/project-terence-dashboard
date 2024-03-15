@@ -32,7 +32,9 @@ const List = memo(() => {
   }, [currentData, filter]);
 
   const reload = useCallback(() => {
-    search({ folder: '*' });
+    setTimeout(() => {
+      search({ folder: '*' });
+    }, 2000);
   }, []);
 
   return (

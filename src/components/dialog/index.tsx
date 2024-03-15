@@ -64,7 +64,7 @@ const Dialog = memo(() => {
 
   return (
     <OnloadProvider onload={() => setTransition(TransitionType.FadeIn)}>
-      <div className='h-screen w-full'>
+      <div className='fixed z-50 h-screen w-full'>
         <Container
           title={title}
           button={button}
