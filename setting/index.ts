@@ -45,6 +45,16 @@ export const SETTING = {
         timestamp: { type: IType.Date, default: 'Date.now()' },
       },
     },
+    {
+      collection: 'recruitInformation',
+      description: '資訊管理',
+      schema: {
+        contacts: { type: IType.String, required: true },
+        linkURL: { type: IType.String, required: true },
+        schedule: { type: IType.String, required: true },
+        timestamp: { type: IType.Date, default: 'Date.now()' },
+      },
+    },
   ],
   dashboard: {
     session: {
@@ -75,6 +85,12 @@ export type TType =
       name: string;
       engName: string;
       html: string;
+      timestamp: number;
+    }
+  | {
+      contacts: string;
+      linkURL: string;
+      schedule: string;
       timestamp: number;
     };
 

@@ -3,7 +3,7 @@ import { memo, useMemo } from 'react';
 import { BsCalendar2DateFill } from 'react-icons/bs';
 import { TType } from '../../../setting';
 
-const Oral = memo(({ data }: { data: Extract<TType, { contacts: string }> | null }) => {
+const Oral = memo(({ data }: { data: Extract<TType, { oral: string }> | null }) => {
   const currentData = useMemo(() => {
     return data?.oral.split(',');
   }, [data]);

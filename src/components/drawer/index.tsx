@@ -52,6 +52,10 @@ const Drawer = memo(({ children }: IReactProps) => (
             <FaNewspaper />
             最新消息
           </Link>
+          <Link to='/recruitInformation'>
+            <BsInfoSquareFill />
+            內容管理
+          </Link>
         </li>
         {!COLLECTION_HIDE && (
           <>

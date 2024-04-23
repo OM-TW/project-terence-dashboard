@@ -11,7 +11,7 @@ import { CommaStringToList } from 'lesca-comma-string';
 
 type TData = { date: string; description: string }[];
 
-const Schedule = memo(({ data }: { data: Extract<TType, { contacts: string }> | null }) => {
+const Schedule = memo(({ data }: { data: Extract<TType, { oral: string }> | null }) => {
   const currentData = useMemo(() => {
     if (data) return CommaStringToList(data.schedule, ['date', 'description']) as TData;
   }, [data]);

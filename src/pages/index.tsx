@@ -22,6 +22,7 @@ import Login from './login';
 import News from './news';
 import RecruitNews from './recruitNews/index.tsx';
 import Share from './share';
+import RecruitInformation from './recruitInformation/index.tsx';
 
 Fetcher.install({
   hostUrl: import.meta.env.VITE_API_PATH || './api',
@@ -56,6 +57,7 @@ const RoutePages = memo(() => {
       <Route path='/album' element={<Album />} />
       <Route path='/editor' element={<Edit />} />
       <Route path='/recruitNews' element={<RecruitNews />} />
+      <Route path='/recruitInformation' element={<RecruitInformation />} />
       <Route path='*' element={ComponentLoader()} />
     </Routes>
   );

@@ -3,7 +3,7 @@ import { memo, useMemo } from 'react';
 import { SiGoogleforms } from 'react-icons/si';
 import { TType } from '../../../setting';
 
-const GoogleForm = memo(({ data }: { data: Extract<TType, { contacts: string }> | null }) => {
+const GoogleForm = memo(({ data }: { data: Extract<TType, { oral: string }> | null }) => {
   const currentData = useMemo(() => data?.formURL, [data]);
 
   return (
