@@ -45,9 +45,14 @@ const Drawer = memo(({ children }: IReactProps) => (
         </li>
         <div className='flex w-full flex-row items-center justify-start py-5'>
           <BsPersonRaisedHand className='mr-1' />
-          人員招募?
+          人才招募
         </div>
-        <li></li>
+        <li>
+          <Link to='/recruitNews'>
+            <FaNewspaper />
+            最新消息
+          </Link>
+        </li>
         {!COLLECTION_HIDE && (
           <>
             <div className='flex w-full flex-row items-center justify-start py-5'>

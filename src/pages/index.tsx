@@ -20,6 +20,7 @@ import Edit from './editor';
 import Home from './home';
 import Login from './login';
 import News from './news';
+import RecruitNews from './recruitNews/index.tsx';
 import Share from './share';
 
 Fetcher.install({
@@ -54,6 +55,7 @@ const RoutePages = memo(() => {
       <Route path='/share' element={<Share />} />
       <Route path='/album' element={<Album />} />
       <Route path='/editor' element={<Edit />} />
+      <Route path='/recruitNews' element={<RecruitNews />} />
       <Route path='*' element={ComponentLoader()} />
     </Routes>
   );

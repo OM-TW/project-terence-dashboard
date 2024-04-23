@@ -37,6 +37,14 @@ export const SETTING = {
         timestamp: { type: IType.Date, default: 'Date.now()' },
       },
     },
+    {
+      collection: 'recruitNews',
+      description: '最新消息',
+      schema: {
+        html: { type: IType.String, required: true },
+        timestamp: { type: IType.Date, default: 'Date.now()' },
+      },
+    },
   ],
   dashboard: {
     session: {
