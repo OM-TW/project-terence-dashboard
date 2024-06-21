@@ -24,8 +24,6 @@ const Login = memo(() => {
   const page = useMemo(() => {
     if (enabled) {
       const Element = lazy(() => import('./login.tsx'));
-      console.log(Element);
-
       if (Element) {
         return (
           <Suspense fallback=''>
@@ -37,8 +35,6 @@ const Login = memo(() => {
     }
     return null;
   }, [enabled]);
-
-  console.log(page);
 
   return <div className='flex h-full w-full items-center justify-center'>{page}</div>;
 });
