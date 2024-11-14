@@ -87,7 +87,11 @@ const App = () => {
   return (
     <Context.Provider {...{ value }}>
       <div className='App'>
-        <BrowserRouter>
+        <BrowserRouter
+          future={{
+            v7_startTransition: true,
+          }}
+        >
           {status ? (
             <Drawer>
               <Navbar />
