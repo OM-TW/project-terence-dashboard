@@ -1,6 +1,9 @@
 /* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
 
+import daisyui from 'daisyui';
+import typography from '@tailwindcss/typography';
+
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   daisyui: {
@@ -52,5 +55,5 @@ export default {
       'sunset',
     ],
   },
-  plugins: ['prettier-plugin-tailwindcss', require('@tailwindcss/typography'), require('daisyui')],
+  plugins: ['prettier-plugin-tailwindcss', typography, daisyui],
 };
